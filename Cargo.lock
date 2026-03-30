@@ -3,6 +3,12 @@
 version = 4
 
 [[package]]
+name = "anyhow"
+version = "1.0.102"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7f202df86484c868dbad7eaa557ef785d5c66295e41b460ef922eca0723b842c"
+
+[[package]]
 name = "bitflags"
 version = "2.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -201,6 +207,7 @@ checksum = "e3ea041fc3a6fb9235217bde03eb9d505eba5d79a8dbee5f08cb4c2e59c4ed9c"
 name = "md-lsp"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "markdown-rs",
  "tokio",
  "tower-lsp-server",
