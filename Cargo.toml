@@ -9,4 +9,7 @@ tower-lsp-server = "0.23.0"
 tokio = { version = "1", features = ["macros", "rt-multi-thread", "io-std"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["fmt"] }
+chrono = "0.4"
 anyhow = "1.0.102"
+ropey = "1.6.1"
+smart-default = "0.7.1"
