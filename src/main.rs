@@ -1,5 +1,6 @@
 mod log;
 mod syntax;
+mod config;
 
 use tokio::sync::Mutex;
 

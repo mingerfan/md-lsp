@@ -38,8 +38,12 @@ impl Text {
         }
     }
 
-    pub fn get_content(&self) -> String {
+    pub fn get_string(&self) -> String {
         self.content.to_string()
+    }
+
+    pub fn get_content(&self) -> &Rope {
+        &self.content
     }
 
     pub fn refresh(&mut self, new_content: String) {
