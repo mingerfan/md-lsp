@@ -1,5 +1,6 @@
 mod text;
 
+use comrak::adapters::SyntaxHighlighterAdapter;
 pub use text::{Text, TextChange};
 
 use pulldown_cmark;
@@ -29,13 +30,18 @@ impl SyntaxServer {
     }
 
     pub fn take_snapshot(&mut self) {
-        self.snapshots_idx.push_back(self.cur_version);
-        self.snapshots.insert(
-            self.cur_version,
-            Snapshot {
-                content: self.text.get_content().clone(),
-            },
-        );
+        if self.snapshots_idx.len() < SyntaxServer::SNAPSHOT_INTERVAL {
+            self.snapshots_idx.push_back(self.cur_version);
+            self.snapshots.insert(
+                self.cur_version,
+                Snapshot {
+                    content: self.text.get_content().clone(),
+                },
+            );
+        } else {
+            let out_idx = self.snapshots_idx.pop_front().unwrap(); 
+            self.snapshots.remove(&out_idx);
+        }    
     }
 
     fn snapshot_get(&self, version: i32) -> Option<&Snapshot> {
